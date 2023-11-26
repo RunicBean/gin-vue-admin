@@ -15,4 +15,4 @@ RUN cat /etc/nginx/conf.d/my.conf
 RUN ls -al /usr/share/nginx/html
 
 EXPOSE 8080
-CMD ["/bin/sh", "-c", "nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "nginx-debug -g 'daemon off;'"]
