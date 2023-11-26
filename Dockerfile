@@ -3,7 +3,7 @@ FROM node:16
 WORKDIR /gva_web/
 COPY ./web .
 
-RUN yarn && yarn build
+RUN npm i && npm run build
 
 FROM golang:alpine as builder
 
