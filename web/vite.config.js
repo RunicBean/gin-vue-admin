@@ -41,11 +41,11 @@ export default ({
   const esbuild = {}
 
   const rollupOptions = {
-    output: {
-      entryFileNames: '087AC4D233B64EB0[name].js',
-      chunkFileNames: '087AC4D233B64EB0[name].js',
-      assetFileNames: '087AC4D233B64EB0[name].[ext]',
-    },
+    // output: {
+    //   entryFileNames: '087AC4D233B64EB0[name].js',
+    //   chunkFileNames: '087AC4D233B64EB0[name].js',
+    //   assetFileNames: '087AC4D233B64EB0[name].[ext]',
+    // },
   }
 
   const config = {
