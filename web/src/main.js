@@ -14,6 +14,8 @@ import auth from '@/directive/auth'
 import { store } from '@/pinia'
 import App from './App.vue'
 import { initDom } from './utils/positionToCode'
+import { Button, Carousel, Flex, Col, Row, Divider, message } from 'ant-design-vue'
+import 'ant-design-vue/dist/reset.css';
 
 initDom()
 /**
@@ -37,6 +39,12 @@ app
   .use(store)
   .use(auth)
   .use(router)
+  .use(Button)
+  .use(Carousel)
+  .use(Flex)
+  .use(Col)
+  .use(Row)
+  .use(Divider)
   .mount('#app')
 
 export default app
