@@ -11,7 +11,6 @@ const companyName = ref("")
 onMounted(() => {
     findCompanyByPath({path: route.params.companyPath})
         .then((res) => {
-            console.log(res)
             if (res.code !== 0) {
                 router.push({ path: '/layout/404' })
             }
