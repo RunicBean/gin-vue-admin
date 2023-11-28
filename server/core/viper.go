@@ -15,6 +15,21 @@ import (
 	_ "github.com/flipped-aurora/gin-vue-admin/server/packfile"
 )
 
+var viperEnvNames = []map[string]string{
+	{"MYSQL_PATH": "Mysql.Path"},
+	{"MYSQL_PASSWORD": "Mysql.Password"},
+}
+
+func viperBindEnvs(v *viper.Viper, envNames []map[string]string) (err error) {
+	for _, name := range envNames {
+		for key, value := range name {
+			envValue := os.Getenv(key)
+			v.Set(value, envValue)
+		}
+	}
+	return nil
+}
+
 // Viper //
 // 优先级: 命令行 > 环境变量 > 默认值
 // Author [SliverHorn](https://github.com/SliverHorn)
@@ -55,6 +70,10 @@ func Viper(path ...string) *viper.Viper {
 	err := v.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
+	}
+
+	if err := viperBindEnvs(v, viperEnvNames); err != nil {
+		panic(fmt.Errorf("Loading env config error: %v \n", err))
 	}
 	v.WatchConfig()
 
