@@ -51,6 +51,7 @@
         <el-table-column align="left" label="外部链接" prop="extLink" width="120" />
         <el-table-column align="left" label="公司" prop="company" width="120" />
         <el-table-column align="left" label="标题" prop="title" width="120" />
+            <el-table-column align="left" label="分组标题" prop="groupTitle" width="120" />
         <el-table-column align="left" label="操作" min-width="120">
             <template #default="scope">
             <el-button type="primary" link class="table-button" @click="getDetails(scope.row)">
@@ -89,6 +90,9 @@
             <el-form-item label="标题:"  prop="title" >
               <el-input v-model="formData.title" :clearable="true"  placeholder="请输入标题" />
             </el-form-item>
+              <el-form-item label="分组标题:"  prop="groupTitle" >
+                  <el-input v-model="formData.groupTitle" :clearable="true"  placeholder="请输入标题" />
+              </el-form-item>
           </el-form>
       </el-scrollbar>
       <template #footer>
@@ -114,6 +118,9 @@
                 <el-descriptions-item label="标题">
                         {{ formData.title }}
                 </el-descriptions-item>
+            <el-descriptions-item label="分组标题">
+                {{ formData.groupTitle }}
+            </el-descriptions-item>
         </el-descriptions>
       </el-scrollbar>
     </el-dialog>
@@ -183,6 +190,16 @@ const rule = reactive({
                    trigger: ['input', 'blur'],
               }
               ],
+                groupTitle : [{
+                    message: '',
+                    trigger: ['input','blur'],
+                },
+                    {
+                        whitespace: true,
+                        message: '不能只输入空格',
+                        trigger: ['input', 'blur'],
+                    }
+                ],
 })
 
 const searchRule = reactive({

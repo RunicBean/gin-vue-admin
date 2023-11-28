@@ -4,6 +4,7 @@ import DetailedItems from "./layoutOne/DetailedItems.vue";
 import {onMounted, ref} from "vue";
 import {findCompanyByPath} from "@/api/company";
 import {useRoute, useRouter} from "vue-router";
+import MainItems from "@/components/external/layoutOne/MainItems.vue";
 
 const route = useRoute()
 const router = useRouter()
@@ -26,7 +27,7 @@ onMounted(() => {
 <template>
     <div class="body">
         <MainImages :company-name="companyName" />
-        <DetailedItems :company-name="companyName" />
+        <MainItems :company-name="companyName" />
     </div>
 </template>
 

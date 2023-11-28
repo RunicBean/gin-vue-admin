@@ -14,6 +14,9 @@
         <el-form-item label="标题:" prop="title">
           <el-input v-model="formData.title" :clearable="true" placeholder="请输入" />
        </el-form-item>
+          <el-form-item label="分组标题:" prop="groupTitle">
+              <el-input v-model="formData.groupTitle" :clearable="true" placeholder="请输入" />
+          </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="save">保存</el-button>
           <el-button type="primary" @click="back">返回</el-button>
@@ -49,6 +52,7 @@ const formData = ref({
             extLink: '',
             company: '',
             title: '',
+            groupTitle: ''
         })
 // 验证规则
 const rule = reactive({
@@ -67,6 +71,10 @@ const rule = reactive({
                    message: '',
                    trigger: ['input','blur'],
                }],
+                groupTitle : [{
+                    message: '',
+                    trigger: ['input','blur'],
+                }],
 })
 
 const elFormRef = ref()

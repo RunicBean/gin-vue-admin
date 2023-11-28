@@ -33,7 +33,7 @@ function modifyRedirectLink(redirectLink) {
 function click(redirectLink) {
     if (redirectLink === "") {
     } else {
-        window.location.replace(redirectLink)
+        window.location.href = redirectLink
     }
 }
 </script>
