@@ -48,6 +48,7 @@
             <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>
         </el-table-column>
         <el-table-column align="left" label="图片链接" prop="imageLink" width="120" />
+        <el-table-column align="left" label="跳转链接" prop="redirectLink" width="120" />
         <el-table-column align="left" label="公司" prop="company" width="120" />
         <el-table-column align="left" label="操作" min-width="120">
             <template #default="scope">
@@ -78,6 +79,9 @@
             <el-form-item label="图片链接:"  prop="imageLink" >
               <el-input v-model="formData.imageLink" :clearable="true"  placeholder="请输入图片链接" />
             </el-form-item>
+              <el-form-item label="跳转链接:"  prop="redirectLink" >
+                  <el-input v-model="formData.redirectLink" :clearable="true"  placeholder="请输入跳转链接" />
+              </el-form-item>
             <el-form-item label="公司:"  prop="company" >
               <el-input v-model="formData.company" :clearable="true"  placeholder="请输入公司" />
             </el-form-item>
@@ -96,6 +100,9 @@
         <el-descriptions column="1" border>
                 <el-descriptions-item label="图片链接">
                         {{ formData.imageLink }}
+                </el-descriptions-item>
+                <el-descriptions-item label="跳转链接">
+                    {{ formData.redirectLink }}
                 </el-descriptions-item>
                 <el-descriptions-item label="公司">
                         {{ formData.company }}
@@ -145,6 +152,16 @@ const rule = reactive({
                    trigger: ['input', 'blur'],
               }
               ],
+                redirectLink : [{
+                    message: '',
+                    trigger: ['input','blur'],
+                },
+                    {
+                        whitespace: true,
+                        message: '不能只输入空格',
+                        trigger: ['input', 'blur'],
+                    }
+                ],
                company : [{
                    required: true,
                    message: '',

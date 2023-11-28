@@ -5,6 +5,9 @@
         <el-form-item label="图片链接:" prop="imageLink">
           <el-input v-model="formData.imageLink" :clearable="true" placeholder="请输入" />
        </el-form-item>
+        <el-form-item label="跳转链接:" prop="redirectLink">
+            <el-input v-model="formData.redirectLink" :clearable="true" placeholder="请输入" />
+        </el-form-item>
         <el-form-item label="公司:" prop="company">
           <el-input v-model="formData.company" :clearable="true" placeholder="请输入" />
        </el-form-item>
@@ -40,6 +43,7 @@ const router = useRouter()
 const type = ref('')
 const formData = ref({
             imageLink: '',
+            redirectLink: '',
             company: '',
         })
 // 验证规则
@@ -49,6 +53,10 @@ const rule = reactive({
                    message: '',
                    trigger: ['input','blur'],
                }],
+                redirectLink : [{
+                    message: '',
+                    trigger: ['input','blur'],
+                }],
                company : [{
                    required: true,
                    message: '',

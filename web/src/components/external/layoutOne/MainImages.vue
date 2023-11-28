@@ -13,13 +13,36 @@ watch(() => props.companyName, (newName) => {
         dataList1.value = res.data.list
     })
 })
+
+function modifyImageLink(imageLink) {
+    if (imageLink.indexOf("uploads/") === 0) {
+        return `api/${imageLink}`
+    } else {
+        return imageLink
+    }
+}
+
+function modifyRedirectLink(redirectLink) {
+    if (redirectLink === "") {
+        return "#"
+    } else {
+        return redirectLink
+    }
+}
+
+function click(redirectLink) {
+    if (redirectLink === "") {
+    } else {
+        window.location.replace(redirectLink)
+    }
+}
 </script>
 
 <template>
     <a-carousel autoplay>
         <template v-for="d in dataList1">
             <div>
-                <img :src="d.imageLink" alt="">
+                <a @click="click(d.redirectLink)"><img :src="modifyImageLink(d.imageLink)" alt=""></a>
             </div>
         </template>
     </a-carousel>
