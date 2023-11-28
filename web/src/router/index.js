@@ -23,6 +23,7 @@ const routes = [{
 },
 {
   path: '/layout-et1/:companyPath',
+  name: 'LayoutEt1',
   meta: {
     closeTab: true,
   },

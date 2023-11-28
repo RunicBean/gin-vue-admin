@@ -76,13 +76,13 @@ captcha:
 mysql:
   path: ""
   port: "31012"
-  config: ""
+  config: "charset=utf8mb4&parseTime=True&loc=Local"
   db-name: "gva"
   username: "root"
   password: ""
   max-idle-conns: 10
   max-open-conns: 100
-  log-mode: ""
+  log-mode: "error"
   log-zap: false
 
 # pgsql connect configuration
