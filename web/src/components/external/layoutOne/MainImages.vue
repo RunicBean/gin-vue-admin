@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {getCarouselDataListByCompany} from "@/api/carouselData";
 
 const props = defineProps({
@@ -7,8 +7,9 @@ const props = defineProps({
 })
 
 const dataList1 = ref([])
-onMounted(() => {
-    getCarouselDataListByCompany({company: props.companyName}).then((res) => {
+
+watch(() => props.companyName, (newName) => {
+    getCarouselDataListByCompany({company: newName}).then((res) => {
         dataList1.value = res.data.list
     })
 })

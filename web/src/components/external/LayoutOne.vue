@@ -15,6 +15,7 @@ onMounted(() => {
                 router.push({ path: '/layout/404' })
             }
             companyName.value = res.data.recompany.name
+            document.title = companyName.value
         })
         .catch((err) => {
             router.push({ path: '/layout/404' })

@@ -1,20 +1,19 @@
 <script setup>
 
 import ItemRow from "./ItemRow.vue";
-import {ref, onMounted, computed} from "vue";
+import {ref, watch} from "vue";
 import {getItemDataList, getItemDataListByCompany} from "@/api/itemData";
 
 const props = defineProps({
     companyName: String
 })
 
-
 const dataList1 = ref([])
 const groupCountNumber = ref(0)
 const groupCount = ref(0)
-onMounted(() => {
 
-    getItemDataListByCompany({company: props.companyName}).then((res) => {
+watch(() => props.companyName, (newName) => {
+    getItemDataListByCompany({company: newName}).then((res) => {
         dataList1.value = res.data.list
         console.log(dataList1.value.length)
         groupCountNumber.value = dataList1.value.length / 3

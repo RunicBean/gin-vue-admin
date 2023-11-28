@@ -80,7 +80,10 @@ func (itemDtaService *ItemDataService) GetItemDataInfoListByCompany(info layout_
 	var itemDtas []layout_one.ItemData
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if info.StartCreatedAt != nil && info.EndCreatedAt != nil {
-		db = db.Where("company = ? AND created_at BETWEEN ? AND ?", info.Company, info.StartCreatedAt, info.EndCreatedAt)
+		db = db.Where("created_at BETWEEN ? AND ?", info.ItemData.Company, info.StartCreatedAt, info.EndCreatedAt)
+	}
+	if info.Company != "" {
+		db = db.Where("company = ?", info.Company)
 	}
 	err = db.Count(&total).Error
 	if err != nil {
