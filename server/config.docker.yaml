@@ -1,7 +1,7 @@
 # github.com/flipped-aurora/gin-vue-admin/server Global Configuration
 
 # jwt configuration
-jwt:
+jwt: 
   signing-key: qmPlus
   expires-time: 7d
   buffer-time: 1d
