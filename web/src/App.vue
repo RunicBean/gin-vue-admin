@@ -24,7 +24,8 @@ defineOptions({
 #app {
   background: #eee;
   height: 100vh;
-  overflow: hidden;
+    // 用来防止下滑，做dashboard类页面很好用
+  //overflow: hidden;
   font-weight: 400 !important;
 }
 .el-button{
