@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [{
-  path: '/my-admin',
+  path: '/',
   redirect: '/login'
 },
 {
@@ -20,14 +20,6 @@ const routes = [{
     closeTab: true,
   },
   component: () => import('@/view/error/index.vue')
-},
-{
-  path: '/layout-et1/:companyPath',
-  name: 'LayoutEt1',
-  meta: {
-    closeTab: true,
-  },
-  component: () => import('@/components/external/LayoutOne.vue')
 }
 ]
 

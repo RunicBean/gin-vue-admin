@@ -4,7 +4,7 @@ import getPageTitle from '@/utils/page'
 import router from '@/router'
 import Nprogress from 'nprogress'
 
-const whiteList = ['Login', 'Init', 'LayoutEt1']
+const whiteList = ['Login', 'Init']
 
 const getRouter = async(userStore) => {
   const routerStore = useRouterStore()
