@@ -52,7 +52,7 @@ email:
 # system configuration
 system:
   env: public  # Change to "develop" to skip authentication for development mode
-  addr: 8888
+  addr: 8080
   db-type: mysql
   oss-type: local    # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
   use-redis: false     # 使用redis
@@ -75,7 +75,7 @@ captcha:
 # 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
 mysql:
   path: ""
-  port: "31012"
+  port: ""
   config: "charset=utf8mb4&parseTime=True&loc=Local"
   db-name: "gva"
   username: "root"

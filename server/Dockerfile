@@ -1,10 +1,3 @@
-FROM node:16
-
-WORKDIR /gva_web/
-COPY . .
-
-RUN yarn && yarn build
-
 FROM golang:alpine as builder
 
 WORKDIR /go/src/github.com/flipped-aurora/gin-vue-admin/server
@@ -23,10 +16,10 @@ LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
 
 WORKDIR /go/src/github.com/flipped-aurora/gin-vue-admin/server
 
-COPY --from=0 /gva_web/dist ./dist/
-COPY --from=1 /go/src/github.com/flipped-aurora/gin-vue-admin/server/server ./
-COPY --from=1 /go/src/github.com/flipped-aurora/gin-vue-admin/server/resource ./resource/
-COPY --from=1 /go/src/github.com/flipped-aurora/gin-vue-admin/server/config.docker.yaml ./
+#COPY --from=0 /gva_web/dist ./dist/
+COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/server ./
+COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/resource ./resource/
+COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/config.docker.yaml ./
 
 EXPOSE 8888
 ENTRYPOINT ./server -c config.docker.yaml

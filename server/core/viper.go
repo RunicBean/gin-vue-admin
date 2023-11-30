@@ -18,6 +18,7 @@ import (
 var viperEnvNames = []map[string]string{
 	{"MYSQL_PATH": "Mysql.Path"},
 	{"MYSQL_PASSWORD": "Mysql.Password"},
+	{"MYSQL_PORT": "Mysql.Port"},
 }
 
 func viperBindEnvs(v *viper.Viper, envNames []map[string]string) (err error) {
