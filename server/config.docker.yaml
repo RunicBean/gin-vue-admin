@@ -172,8 +172,8 @@ aws-s3:
   bucket: wechat-comm
   region: ap-shanghai
   endpoint: "https://dorian-oss-web.zeabur.app"
-  secret-id:
-  secret-key:
+  secret-id: ""
+  secret-key: ""
   base-url: https://dorian-oss-web.zeabur.app/wechat-comm
   path-prefix: layout-et1
   s3-force-path-style: true
