@@ -16,9 +16,11 @@ import (
 )
 
 var viperEnvNames = []map[string]string{
-	{"MYSQL_PATH": "Mysql.Path"},
-	{"MYSQL_PASSWORD": "Mysql.Password"},
-	{"MYSQL_PORT": "Mysql.Port"},
+	{"GVA_MYSQL_PATH": "Mysql.Path"},
+	{"GVA_MYSQL_PASSWORD": "Mysql.Password"},
+	{"GVA_MYSQL_PORT": "Mysql.Port"},
+	{"GVA_AWSS3_SECRETID": "AwsS3.SecretID"},
+	{"GVA_AWSS3_SECRETKEY": "AwsS3.SecretKey"},
 }
 
 func viperBindEnvs(v *viper.Viper, envNames []map[string]string) (err error) {
