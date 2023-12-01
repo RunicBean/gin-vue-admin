@@ -27,6 +27,7 @@ func viperBindEnvs(v *viper.Viper, envNames []map[string]string) (err error) {
 	for _, name := range envNames {
 		for key, value := range name {
 			envValue := os.Getenv(key)
+			global.GVA_LOG.Error(fmt.Sprintf("importing env, key: %s, value: %s", key, value))
 			v.Set(value, envValue)
 		}
 	}
