@@ -76,9 +76,11 @@ func Viper(path ...string) *viper.Viper {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
 
-	if err := viperBindEnvs(v, viperEnvNames); err != nil {
-		panic(fmt.Errorf("Loading env config error: %v \n", err))
-	}
+	v.SetEnvPrefix("GVA")
+	v.AutomaticEnv()
+	//if err := viperBindEnvs(v, viperEnvNames); err != nil {
+	//	panic(fmt.Errorf("Loading env config error: %v \n", err))
+	//}
 	v.WatchConfig()
 
 	v.OnConfigChange(func(e fsnotify.Event) {
