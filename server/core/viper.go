@@ -93,5 +93,7 @@ func Viper(path ...string) *viper.Viper {
 
 	// root 适配性 根据root位置去找到对应迁移位置,保证root路径有效
 	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
+	fmt.Print("sid: ", global.GVA_CONFIG.AwsS3.SecretID)
+	fmt.Print("skey: ", global.GVA_CONFIG.AwsS3.SecretKey)
 	return v
 }
