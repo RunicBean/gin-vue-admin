@@ -19,19 +19,21 @@ var viperEnvNames = []map[string]string{
 	{"GVA_MYSQL_PATH": "Mysql.Path"},
 	{"GVA_MYSQL_PASSWORD": "Mysql.Password"},
 	{"GVA_MYSQL_PORT": "Mysql.Port"},
-	{"GVA_AWSS3_SECRETID": "AwsS3.SecretID"},
-	{"GVA_AWSS3_SECRETKEY": "AwsS3.SecretKey"},
 }
 
 func viperBindEnvs(v *viper.Viper, envNames []map[string]string) (err error) {
 	for _, name := range envNames {
 		for key, value := range name {
 			envValue := os.Getenv(key)
-			fmt.Printf("importing env, value: %s, envValue: %s ", value, envValue)
 			v.Set(value, envValue)
 		}
 	}
 	return nil
+}
+
+func setEnvs() {
+	global.GVA_CONFIG.AwsS3.SecretID = os.Getenv("GVA_AWSS3_SECRETID")
+	global.GVA_CONFIG.AwsS3.SecretKey = os.Getenv("GVA_AWSS3_SECRETKEY")
 }
 
 // Viper //
@@ -93,6 +95,7 @@ func Viper(path ...string) *viper.Viper {
 
 	// root 适配性 根据root位置去找到对应迁移位置,保证root路径有效
 	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
+	setEnvs()
 	fmt.Print("sid: ", global.GVA_CONFIG.AwsS3.SecretID)
 	fmt.Print("skey: ", global.GVA_CONFIG.AwsS3.SecretKey)
 	return v
