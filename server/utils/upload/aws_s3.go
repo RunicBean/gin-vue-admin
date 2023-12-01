@@ -82,15 +82,15 @@ func (*AwsS3) DeleteFile(key string) error {
 
 // newSession Create S3 session
 func newSession() *session.Session {
-	global.GVA_LOG.Info(global.GVA_CONFIG.AwsS3.SecretID)
-	global.GVA_LOG.Info(global.GVA_CONFIG.AwsS3.SecretKey)
+	global.GVA_LOG.Error(global.GVA_CONFIG.AwsS3.SecretID)
+	global.GVA_LOG.Error(global.GVA_CONFIG.AwsS3.SecretKey)
 	staticCred := credentials.NewStaticCredentials(
 		global.GVA_CONFIG.AwsS3.SecretID,
 		global.GVA_CONFIG.AwsS3.SecretKey,
 		"",
 	)
 	value, _ := staticCred.Get()
-	global.GVA_LOG.Info(value.AccessKeyID + " : " + value.SecretAccessKey)
+	global.GVA_LOG.Error(value.AccessKeyID + " : " + value.SecretAccessKey)
 	sess, _ := session.NewSession(&aws.Config{
 		Region:           aws.String(global.GVA_CONFIG.AwsS3.Region),
 		Endpoint:         aws.String(global.GVA_CONFIG.AwsS3.Endpoint), //minio在这里设置地址,可以兼容
